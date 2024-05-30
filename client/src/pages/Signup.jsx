@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 function Signup() {
   const [formData, setFormData] = useState({
     username: "",
-    firstname: "",
-    lastname: "",
+    first_name: "",
+    last_name: "",
     email: "",
     password: "",
   });
@@ -82,9 +82,9 @@ function Signup() {
               <div className="mb-2">
                 <input
                   type="text"
-                  id="firstname"
-                  name="firstname"
-                  value={formData.firstname}
+                  id="first_name"
+                  name="first_name"
+                  value={formData.first_name}
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                   placeholder="Firstname"
                   required
@@ -94,9 +94,9 @@ function Signup() {
               <div className="mb-2">
                 <input
                   type="text"
-                  id="lastname"
-                  name="lastname"
-                  value={formData.lastname}
+                  id="last_name"
+                  name="last_name"
+                  value={formData.last_name}
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                   placeholder="Lastname"
                   required
