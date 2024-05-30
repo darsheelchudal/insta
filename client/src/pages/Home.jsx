@@ -40,8 +40,8 @@ const Home = () => {
             </Link>
           </div>
         </div>
-        <div className="main-content border-2 p-10 w-[700px]">
-          <div className="stories flex space-x-4">
+        <div className="main-content w-[700px]">
+          <div className="stories flex space-x-4 p-3">
             <div className="golo">
               <img
                 src={dummy}
@@ -312,9 +312,41 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className="profcard flex space-x-2">
-          <div className="img">img</div>
-          <div className="name">name</div>
+        <div className="right-card">
+          <div className="profcard flex space-x-2 px-10 my-5">
+            <div className="img">
+              <img
+                src={dummy}
+                className=" h-20 w-20 rounded-full"
+                alt=""
+                srcset=""
+              />
+            </div>
+            <div>
+              <div className="username my-2 font-semibold">Username</div>
+            </div>
+          </div>
+          <div className="heading px-10">
+            <h1 className="text-slate-500 font-semibold">
+              Suggestions for you
+            </h1>
+          </div>
+          <div className="suggestions">
+            <div className="profcard flex space-x-2 px-10 my-5">
+              <div className="img">
+                <img
+                  src={dummy}
+                  className=" h-20 w-20 rounded-full"
+                  alt=""
+                  srcset=""
+                />
+              </div>
+              <div className="flex gap-x-7">
+                <div className="username font-semibold">Username</div>
+                <span className="text-blue-500">follow</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </>

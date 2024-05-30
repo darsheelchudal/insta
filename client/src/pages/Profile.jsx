@@ -19,7 +19,7 @@ function Profile() {
   return (
     <>
       <div className="flex">
-        <div className="sidebar border-2 p-10 h-[950px] sticky top-0">
+        <div className="md:block hidden sidebar border-2 p-10 h-[950px] sticky top-0">
           <div className="logo">
             <img src={instagramLogo} alt="" srcset="" className="w-[120px]" />
           </div>
@@ -47,14 +47,19 @@ function Profile() {
             <div>
               <div className="upper flex gap-x-6    ">
                 <div className="photo">
-                  <img src={aditi} className="h-40 w-40 rounded-full" />
+                  <img src={aditi} className="md:h-40 h-20 w-40 rounded-full" />
                 </div>
                 <div className="my-4 flex gap-x-6 justify-center">
                   <div className="username">
                     <h1 className="text-2xl">username</h1>
                   </div>
                   <div className="editprofile">
-                    <h1 className="text-2xl">edit profile</h1>
+                    <button
+                      type="submit"
+                      className="bg-slate-200 w-40 h-8 rounded-lg font-semibold"
+                    >
+                      Edit profile
+                    </button>
                   </div>
                 </div>
               </div>
@@ -112,23 +117,19 @@ function Profile() {
             <div className="main">
               <div className="card flex gap-x-3 flex-wrap my-7">
                 <div className="img">
-                  <img src={aditi} className="w-[200px]" alt="" />
+                  <img src={aditi} className="md:w-[200px] w-[130px]" alt="" />
                 </div>
                 <div className="img">
-                  <img src={aditi} className="w-[200px]" alt="" />
+                  <img src={aditi} className="md:w-[200px] w-[130px]" alt="" />
                 </div>
                 <div className="img">
-                  <img src={aditi} className="w-[200px]" alt="" />
-                </div>
-
-                <div className="img">
-                  <img src={aditi} className="w-[200px]" alt="" />
+                  <img src={aditi} className="md:w-[200px] w-[130px]" alt="" />
                 </div>
                 <div className="img">
-                  <img src={aditi} className="w-[200px]" alt="" />
+                  <img src={aditi} className="md:w-[200px] w-[130px]" alt="" />
                 </div>
                 <div className="img">
-                  <img src={aditi} className="w-[200px]" alt="" />
+                  <img src={aditi} className="md:w-[200px] w-[130px]" alt="" />
                 </div>
               </div>
             </div>
