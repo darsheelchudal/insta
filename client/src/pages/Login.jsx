@@ -5,7 +5,9 @@ import { FaFacebook } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({ username: "", password: "" });
+  const [error, setError] = useState("");
+
   const navigate = useNavigate();
   const handleChange = (e) => {
     setFormData({
@@ -21,21 +23,20 @@ function Login() {
         headers: {
           "Content-type": "application/json",
         },
-        wiwithCredentials: true,
 
         body: JSON.stringify(formData),
       });
+      if (!res.ok) {
+        console.log("Network response error");
+      }
       const data = await res.json();
-
-      localStorage.clear();
-      localStorage.setItem("access_token", data.access);
-      localStorage.setItem("refresh_token", data.refresh);
-
       console.log(data);
       if (data.success === false) {
-        console.log("Sign in failed");
+        setError("Sign in failed");
       } else {
-        console.log("Sign in successful");
+        localStorage.setItem("access_token", data.access);
+
+        localStorage.setItem("refresh_token", data.refresh);
         navigate("/home");
       }
     } catch (error) {
@@ -85,6 +86,10 @@ function Login() {
                   Log in
                 </button>
               </form>
+              {error && (
+                <p className="text-red-500 text-center mt-2">{error}</p>
+              )}
+
               <div className="flex justify-center my-8">
                 <button className="text-blue-800 rounded-lg font-semibold flex items-center gap-x-2">
                   <FaFacebook />
