@@ -2,6 +2,7 @@ import react from "react";
 import { useState, useEffect, Navigate } from "react";
 import dummy from "../assets/images/aditi.jpg";
 import instagramLogo from "../assets/images/Logo-Instagram.png";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(true);
@@ -34,7 +35,9 @@ const Home = () => {
 
             <div className="item-1">Notifications</div>
             <div className="item-1">Create</div>
-            <div className="item-1">Profile</div>
+            <Link to="/profile">
+              <div className="item-1">Profile</div>
+            </Link>
           </div>
         </div>
         <div className="main-content border-2 p-10 w-[700px]">
@@ -46,7 +49,7 @@ const Home = () => {
                 alt=""
                 srcset=""
               />
-              <p className="text-slate-500">
+              <p className="text-slate-500 text-center text-center">
                 <sm>aditi hydari</sm>
               </p>
             </div>
@@ -57,7 +60,19 @@ const Home = () => {
                 alt=""
                 srcset=""
               />
-              <p className="text-slate-500">
+              <p className="text-slate-500 text-center">
+                <sm>aditi hydari</sm>
+              </p>
+            </div>
+
+            <div className="golo">
+              <img
+                src={dummy}
+                className="h-20 w-20 rounded-[100%]"
+                alt=""
+                srcset=""
+              />
+              <p className="text-slate-500 text-center">
                 <sm>aditi hydari</sm>
               </p>
             </div>
@@ -68,7 +83,7 @@ const Home = () => {
                 alt=""
                 srcset=""
               />
-              <p className="text-slate-500">
+              <p className="text-slate-500 text-center">
                 <sm>aditi hydari</sm>
               </p>
             </div>
@@ -79,7 +94,7 @@ const Home = () => {
                 alt=""
                 srcset=""
               />
-              <p className="text-slate-500">
+              <p className="text-slate-500 text-center">
                 <sm>aditi hydari</sm>
               </p>
             </div>
@@ -90,7 +105,7 @@ const Home = () => {
                 alt=""
                 srcset=""
               />
-              <p className="text-slate-500">
+              <p className="text-slate-500 text-center">
                 <sm>aditi hydari</sm>
               </p>
             </div>
@@ -101,29 +116,7 @@ const Home = () => {
                 alt=""
                 srcset=""
               />
-              <p className="text-slate-500">
-                <sm>aditi hydari</sm>
-              </p>
-            </div>
-            <div className="golo">
-              <img
-                src={dummy}
-                className="h-20 w-20 rounded-[100%]"
-                alt=""
-                srcset=""
-              />
-              <p className="text-slate-500">
-                <sm>aditi hydari</sm>
-              </p>
-            </div>
-            <div className="golo">
-              <img
-                src={dummy}
-                className="h-20 w-20 rounded-[100%]"
-                alt=""
-                srcset=""
-              />
-              <p className="text-slate-500">
+              <p className="text-slate-500 text-center">
                 <sm>aditi hydari</sm>
               </p>
             </div>
