@@ -2,11 +2,47 @@ import React, { useState } from "react";
 import iphoneWithProfile from "../assets/images/iphone-with-profile.jpg";
 import instagramLogo from "../assets/images/Logo-Instagram.png";
 import { FaFacebook } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [formData, setFormData] = useState({});
+  const navigate = useNavigate();
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value,
+    });
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await fetch("http://127.0.0.1:8000/login/", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        wiwithCredentials: true,
+
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+
+      localStorage.clear();
+      localStorage.setItem("access_token", data.access);
+      localStorage.setItem("refresh_token", data.refresh);
+
+      console.log(data);
+      if (data.success === false) {
+        console.log("Sign in failed");
+      } else {
+        console.log("Sign in successful");
+        navigate("/home");
+      }
+    } catch (error) {
+      console.log("Error logging in", error.message);
+    }
+  };
+
   return (
     <>
       <div className="flex justify-center my-10">
@@ -24,29 +60,31 @@ function Login() {
               <img src={instagramLogo} alt="" srcset="" className="h-[100px]" />
             </div>
             <div className="form w-[300px]">
-              <div class="mb-5">
-                <input
-                  type="text"
-                  onChange={(e) => setUsername(e.target.value)}
-                  id="username"
-                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="Username"
-                  required
-                />
-              </div>
-              <div class="mb-5">
-                <input
-                  type="text"
-                  id="password"
-                  onChange={(e) => setPassword(e.target.value)}
-                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="Password"
-                  required
-                />
-              </div>
-              <button className="bg-blue-500 hover:bg-blue-600 text-white w-full rounded-lg h-8">
-                Log in
-              </button>
+              <form onSubmit={handleSubmit}>
+                <div class="mb-5">
+                  <input
+                    type="text"
+                    onChange={handleChange}
+                    id="username"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="Username"
+                    required
+                  />
+                </div>
+                <div class="mb-5">
+                  <input
+                    type="text"
+                    id="password"
+                    onChange={handleChange}
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="Password"
+                    required
+                  />
+                </div>
+                <button className="bg-blue-500 hover:bg-blue-600 text-white w-full rounded-lg h-8">
+                  Log in
+                </button>
+              </form>
               <div className="flex justify-center my-8">
                 <button className="text-blue-800 rounded-lg font-semibold flex items-center gap-x-2">
                   <FaFacebook />

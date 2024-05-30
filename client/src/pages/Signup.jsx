@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import instagramLogo from "../assets/images/Logo-Instagram.png";
 import { FaFacebook } from "react-icons/fa";
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
 function Signup() {
   const [formData, setFormData] = useState({
     username: "",
@@ -11,6 +10,7 @@ function Signup() {
     email: "",
     password: "",
   });
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -33,8 +33,7 @@ function Signup() {
       });
       if (response.ok) {
         console.log("Sign up successful");
-      } else {
-        console.log("Sign up failed");
+        navigate("/");
       }
     } catch (error) {
       console.log("Error signup", error);
