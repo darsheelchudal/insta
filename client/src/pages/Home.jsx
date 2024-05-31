@@ -3,6 +3,7 @@ import { useState, useEffect, Navigate } from "react";
 import dummy from "../assets/images/aditi.jpg";
 import instagramLogo from "../assets/images/Logo-Instagram.png";
 import { Link } from "react-router-dom";
+import Sidebar from "../components/sidebar";
 
 const Home = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(true);
@@ -12,34 +13,16 @@ const Home = () => {
     if (!token) {
       setIsAuthenticated(false);
     }
-    if (!isAuthenticated) {
-      return <Navigate to="/login" />;
-    }
-  });
+  }, []);
+
+  if (!isAuthenticated) {
+    return <Navigate to="/login" />;
+  }
   return (
     <>
       <div className="flex justify-between">
-        <div className="sidebar border-2 p-10 h-[950px] sticky top-0">
-          <div className="logo">
-            <img src={instagramLogo} alt="" srcset="" className="w-[120px]" />
-          </div>
-          <div className="flex flex-col gap-y-10 my-10">
-            <div className="item-1">Home</div>
-            <div className="item-1">Search</div>
+        <Sidebar />
 
-            <div className="item-1">Explore</div>
-
-            <div className="item-1">Reels</div>
-
-            <div className="item-1">Messages</div>
-
-            <div className="item-1">Notifications</div>
-            <div className="item-1">Create</div>
-            <Link to="/profile">
-              <div className="item-1">Profile</div>
-            </Link>
-          </div>
-        </div>
         <div className="main-content w-[700px]">
           <div className="stories flex space-x-4 p-3">
             <div className="golo">
@@ -312,7 +295,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className="right-card">
+        <div className="right-card md:block hidden">
           <div className="profcard flex space-x-2 px-10 my-5">
             <div className="img">
               <img

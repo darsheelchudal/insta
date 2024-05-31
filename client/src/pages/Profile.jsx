@@ -3,6 +3,7 @@ import { useState, useEffect, Navigate } from "react";
 import instagramLogo from "../assets/images/Logo-Instagram.png";
 import aditi from "../assets/images/aditi.jpg";
 import { Link } from "react-router-dom";
+import Sidebar from "../components/sidebar";
 
 function Profile() {
   const [isAuthenticated, setIsAuthenticated] = useState(true);
@@ -19,29 +20,8 @@ function Profile() {
   return (
     <>
       <div className="flex">
-        <div className="md:block hidden sidebar border-2 p-10 h-[950px] sticky top-0">
-          <div className="logo">
-            <img src={instagramLogo} alt="" srcset="" className="w-[120px]" />
-          </div>
-          <div className="flex flex-col gap-y-10 my-10">
-            <Link to="/home">
-              <div className="item-1">Home</div>
-            </Link>
-            <div className="item-1">Search</div>
+        <Sidebar />
 
-            <div className="item-1">Explore</div>
-
-            <div className="item-1">Reels</div>
-
-            <div className="item-1">Messages</div>
-
-            <div className="item-1">Notifications</div>
-            <div className="item-1">Create</div>
-            <Link to="/profile">
-              <div className="item-1">Profile</div>
-            </Link>
-          </div>
-        </div>
         <div className="flex justify-center w-full">
           <div className="profile border-2 px-40 py-10 w-[960px]">
             <div>
