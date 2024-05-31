@@ -7,7 +7,6 @@ import Sidebar from "../components/sidebar";
 
 const Home = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(true);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const token = localStorage.getItem("access_token");
