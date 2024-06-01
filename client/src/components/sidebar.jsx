@@ -9,7 +9,7 @@ function Sidebar() {
         <div className="logo">
           <img src={instagramLogo} alt="" srcset="" className="w-[120px]" />
         </div>
-        <div className="flex flex-col gap-y-10 my-10">
+        <div className="flex flex-col gap-y-8 my-10">
           <Link to="/home">
             <div className="item-1">Home</div>
           </Link>
